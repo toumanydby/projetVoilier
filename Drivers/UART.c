@@ -1,5 +1,5 @@
 #include "UART.h"
-
+#include "GPIO.h"
 void (*Uart_PTF1) (void);
 void (*Uart_PTF2) (void);
 void (*Uart_PTF3) (void);
@@ -16,9 +16,9 @@ void MyUART_Init(USART_TypeDef *UART, unsigned int debitRate){
 	if(UART == USART3) RCC->APB1ENR |= RCC_APB1ENR_USART3EN;
 	
 	if(UART == USART1){
-		fck = 36000000;
-	} else {
 		fck = 72000000;
+	} else {
+		fck = 36000000;
 	}	
 	
 	// On active notre UART
@@ -38,7 +38,6 @@ void MyUART_Init(USART_TypeDef *UART, unsigned int debitRate){
 	UART->CR1 |= (USART_CR1_RE | USART_CR1_TE);
 }
 
-
 void MyUART_Send(USART_TypeDef *UART, char data){
 	// On ne fait rien tant que le flag "transmit data register empty" (USART_SR_TXE) n'est pas set.
 	while( !(UART->SR & USART_SR_TXE)){
@@ -47,28 +46,38 @@ void MyUART_Send(USART_TypeDef *UART, char data){
 	UART->DR = data;	
 }
 
-
 char MyUART_Read(USART_TypeDef *UART){
-	// Tant que le receive data register (RXNE) n'est pas vide, on boucle 
-  while ( !(UART->SR & USART_SR_RXNE)) {
-    // Une fois RXNE est mis, cela signifie que les data sont pretes a etre lue.    
-  }
 	// on les lit ensuite
 	return UART->DR;
 }
 
+
 void MyUART_EnableReceiveInterruption(USART_TypeDef *UART, void ( * IT_function ) (void)) {
-		// On active RXNE et TXE avec les flags (Receive Data Register Not Empty) interrupt et pour gerer les erreurs USART_CR1_PEIE
+		// On active RXNE avec le flag (Receive Data Register Not Empty) et pour gerer les erreurs on active le flag USART_CR1_PEIE
     UART->CR1 |= (USART_CR1_RXNEIE | USART_CR1_PEIE);
-    
+    ourGPIO_struct TX_GPIO;
 		// On active l'interruption de l'UART dans le NVIC
 		if(UART == USART1){
 			Uart_PTF1 = IT_function;
+			TX_GPIO.GPIO = GPIOA;
+			TX_GPIO.GPIO_conf = altOut_Ppull;
+			TX_GPIO.GPIO_pin = 9;
+			ourGPIO_Init(&TX_GPIO);
 			NVIC_EnableIRQ(USART1_IRQn);
-		} else if( UART == USART2){
+		} 
+		else if( UART == USART2){
 			Uart_PTF2 = IT_function;
+			TX_GPIO.GPIO = GPIOD;
+			TX_GPIO.GPIO_conf = altOut_Ppull;
+			TX_GPIO.GPIO_pin = 5;
+			ourGPIO_Init(&TX_GPIO);
 			NVIC_EnableIRQ(USART2_IRQn);
-		} else if( UART == USART3){
+		} 
+		else if( UART == USART3){
+			TX_GPIO.GPIO = GPIOB;
+			TX_GPIO.GPIO_conf = altOut_Ppull;
+			TX_GPIO.GPIO_pin = 10;
+			ourGPIO_Init(&TX_GPIO);
 			Uart_PTF3 = IT_function;
 			NVIC_EnableIRQ(USART3_IRQn);
 		}
@@ -81,19 +90,14 @@ void USART1_IRQHandler(void){
 		USART1->SR &= ~USART_SR_RXNE;
 		(*Uart_PTF1)(); 
 	}	
-	
-
-    
-
 }
-
+ 
 void USART2_IRQHandler(void){
 	if(USART2->SR & USART_SR_RXNE) {
 		USART2->SR &= ~USART_SR_RXNE;
     (*Uart_PTF2)(); 
 	}
 }
-
 
 void USART3_IRQHandler(void){
 	if(USART3->SR & USART_SR_RXNE) {
