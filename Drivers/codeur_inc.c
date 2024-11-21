@@ -1,4 +1,6 @@
 #include "stm32f10x.h"
+#include "codeur_inc.h"
+
 void Encoder_Init(TIM_TypeDef * Timer){
 	if(Timer == TIM1) {RCC->APB2ENR |= RCC_APB2ENR_TIM1EN;}
 	else if(Timer == TIM2) {RCC->APB1ENR |= RCC_APB1ENR_TIM2EN;}
@@ -16,9 +18,9 @@ void Encoder_Init(TIM_TypeDef * Timer){
          
         Timer->ARR = 1440-1;
 
-        TIM2->PSC = 71;
+        Timer->PSC = 71;
        
-        TIM2->CR1 |= TIM_CR1_CEN;
+        Timer->CR1 |= TIM_CR1_CEN;
 }
 
 void Z_Pin_Interrupt_Init(void) {

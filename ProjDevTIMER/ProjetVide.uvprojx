@@ -409,6 +409,11 @@
               <FileType>1</FileType>
               <FilePath>..\Drivers\UART.c</FilePath>
             </File>
+            <File>
+              <FileName>codeur_inc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\codeur_inc.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -923,6 +928,11 @@
               <FileName>UART.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Drivers\UART.c</FilePath>
+            </File>
+            <File>
+              <FileName>codeur_inc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\codeur_inc.c</FilePath>
             </File>
           </Files>
         </Group>
