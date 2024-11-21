@@ -66,6 +66,51 @@ void TIM4_IRQHandler(void){
 	}
 }
 
+void MyTimer_PWM( TIM_TypeDef * Timer , char Channel){
+	
+	if(Channel==1){
+		Timer->CCMR1 &= ~TIM_CCMR1_OC1M;          // Effacer les bits du mode de comparaison
+		Timer->CCMR1 |= (0x6 << 4);  // R gler le mode PWM 1 (0x6)
+		Timer->CCMR1 |= TIM_CCMR1_OC1PE;          // Activer le pr chargement pour la comparaison
+		Timer->CCER |= TIM_CCER_CC1E;             // Activer la capture/comparaison pour le canal 1 (activer le canal 1 )
+	}
+	if(Channel==2){
+		Timer->CCMR1 &= ~TIM_CCMR1_OC2M;          // Effacer les bits du mode de comparaison
+		Timer->CCMR1 |= (0x6 << 12);  // R gler le mode PWM 1 (0x6)
+		Timer->CCMR1 |= TIM_CCMR1_OC2PE;          // Activer le pr chargement pour la comparaison
+		Timer->CCER |= TIM_CCER_CC2E;             // Activer la capture/comparaison pour le canal 2 (activer le canal 2 )
+	}
+	if(Channel==3){
+		Timer->CCMR2 &= ~TIM_CCMR2_OC3M;          // Effacer les bits du mode de comparaison
+		Timer->CCMR2 |= (0x6 << 4);  // R gler le mode PWM 1 (0x6)
+		Timer->CCMR2 |= TIM_CCMR2_OC3PE;          // Activer le pr chargement pour la comparaison
+		Timer->CCER |= TIM_CCER_CC3E;             // Activer la capture/comparaison pour le canal 1 (activer le canal 1 )
+	}
+	if(Channel==4){
+		Timer->CCMR2 &= ~TIM_CCMR2_OC4M;          // Effacer les bits du mode de comparaison
+		Timer->CCMR2 |= (0x6 << 12);  // R gler le mode PWM 1 (0x6)
+		Timer->CCMR2 |= TIM_CCMR2_OC4PE;          // Activer le pr chargement pour la comparaison
+		Timer->CCER |= TIM_CCER_CC4E;             // Activer la capture/comparaison pour le canal 2 (activer le canal 2 )
+	}
+}
+void MyTimer_SetDutyCycle(TIM_TypeDef * Timer, char Channel, int dutycycle) {
+	
+	int pulse = dutycycle * (Timer->ARR+1)/100;
+  
+	if(Channel==1){
+		Timer->CCR1=pulse;
+	}
+	if(Channel==2){
+		Timer->CCR2=pulse;
+	}
+	if(Channel==3){
+		Timer->CCR3=pulse;
+	}
+	if(Channel==4){
+		Timer->CCR4=pulse;
+	}
+}
+
 
 
 

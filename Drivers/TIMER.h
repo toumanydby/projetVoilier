@@ -24,6 +24,8 @@ void MyTimer_Base_Init(MyTimer_Struct_TypeDef * Timer);
 *			@note: La fonction MyTimer_Base_Init dois avoir etre lancee au prealable
 */
 void MyTimer_ActiveIT ( TIM_TypeDef * Timer, char Prio, void ( * IT_function ) (void));
+void MyTimer_PWM( TIM_TypeDef * Timer , char Channel);
+void MyTimer_SetDutyCycle(TIM_TypeDef * Timer, char Channel, int dutycycle);
 
 
 void TIM1_UP_IRQHandler(void);
