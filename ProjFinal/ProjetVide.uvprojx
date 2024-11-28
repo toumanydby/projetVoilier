@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath></IncludePath>
+              <IncludePath>..\Drivers;..\Service</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -392,16 +392,54 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>TPGPIO</GroupName>
+          <GroupName>Drivers</GroupName>
+          <Files>
+            <File>
+              <FileName>ADC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>U:\Documents\projetVoilier\Drivers\ADC.c</FilePath>
+            </File>
+            <File>
+              <FileName>codeur_inc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>U:\Documents\projetVoilier\Drivers\codeur_inc.c</FilePath>
+            </File>
+            <File>
+              <FileName>GPIO.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>U:\Documents\projetVoilier\Drivers\GPIO.c</FilePath>
+            </File>
+            <File>
+              <FileName>TIMER.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>U:\Documents\projetVoilier\Drivers\TIMER.c</FilePath>
+            </File>
+            <File>
+              <FileName>UART.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>U:\Documents\projetVoilier\Drivers\UART.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
-          <GroupName>TPTIMER</GroupName>
-        </Group>
-        <Group>
-          <GroupName>TPADC</GroupName>
-        </Group>
-        <Group>
-          <GroupName>TPUART</GroupName>
+          <GroupName>Services</GroupName>
+          <Files>
+            <File>
+              <FileName>GirouetteService.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Service\GirouetteService.c</FilePath>
+            </File>
+            <File>
+              <FileName>PlateauService.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Service\PlateauService.c</FilePath>
+            </File>
+            <File>
+              <FileName>VoileService.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\VoileService.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>
@@ -797,16 +835,54 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>TPGPIO</GroupName>
+          <GroupName>Drivers</GroupName>
+          <Files>
+            <File>
+              <FileName>ADC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>U:\Documents\projetVoilier\Drivers\ADC.c</FilePath>
+            </File>
+            <File>
+              <FileName>codeur_inc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>U:\Documents\projetVoilier\Drivers\codeur_inc.c</FilePath>
+            </File>
+            <File>
+              <FileName>GPIO.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>U:\Documents\projetVoilier\Drivers\GPIO.c</FilePath>
+            </File>
+            <File>
+              <FileName>TIMER.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>U:\Documents\projetVoilier\Drivers\TIMER.c</FilePath>
+            </File>
+            <File>
+              <FileName>UART.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>U:\Documents\projetVoilier\Drivers\UART.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
-          <GroupName>TPTIMER</GroupName>
-        </Group>
-        <Group>
-          <GroupName>TPADC</GroupName>
-        </Group>
-        <Group>
-          <GroupName>TPUART</GroupName>
+          <GroupName>Services</GroupName>
+          <Files>
+            <File>
+              <FileName>GirouetteService.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Service\GirouetteService.c</FilePath>
+            </File>
+            <File>
+              <FileName>PlateauService.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Service\PlateauService.c</FilePath>
+            </File>
+            <File>
+              <FileName>VoileService.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\VoileService.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>
