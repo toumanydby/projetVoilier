@@ -1,26 +1,38 @@
 #include "stm32f10x.h"
 #include "codeur_inc.h"
 
+
 void Encoder_Init(TIM_TypeDef * Timer){
 	if(Timer == TIM1) {RCC->APB2ENR |= RCC_APB2ENR_TIM1EN;}
 	else if(Timer == TIM2) {RCC->APB1ENR |= RCC_APB1ENR_TIM2EN;}
 	else if(Timer == TIM3) {RCC->APB1ENR |= RCC_APB1ENR_TIM3EN;}
 	else if(Timer == TIM4) {RCC->APB1ENR |= RCC_APB1ENR_TIM4EN;}
 
-        Timer->SMCR |= TIM_SMCR_SMS_0 | TIM_SMCR_SMS_1;
+     Timer->SMCR |= TIM_SMCR_SMS_0 | TIM_SMCR_SMS_1;
 
-        Timer->CCMR1 |= TIM_CCMR1_CC1S_0;
-        Timer->CCMR1 |= TIM_CCMR1_CC2S_0;
-         
-        Timer->CCER &= ~(TIM_CCER_CC1P | TIM_CCER_CC2P);
-        
-        Timer->CCER |= TIM_CCER_CC1E | TIM_CCER_CC2E;
-         
-        Timer->ARR = 1440-1;
+		Timer->CCMR1 |= TIM_CCMR1_CC1S_0;
+		Timer->CCMR1 |= TIM_CCMR1_CC2S_0;
+		 
+		Timer->CCER &= ~(TIM_CCER_CC1P | TIM_CCER_CC2P);
+		
+		Timer->CCER |= TIM_CCER_CC1E | TIM_CCER_CC2E;
+		 
+		Timer->ARR = 1440-1;
 
-        Timer->PSC = 71;
-       
-        Timer->CR1 |= TIM_CR1_CEN;
+		Timer->PSC = 0;
+	 
+		Timer->CR1 |= TIM_CR1_CEN;
+
+		IC1.GPIO= GPIOA;
+		IC1.GPIO_conf = in_Floating;
+		IC1.GPIO_pin = 8;
+		
+		IC2.GPIO = GPIOA;
+		IC2.GPIO_conf = in_Floating;
+		IC2.GPIO_pin = 9;
+		
+		ourGPIO_Init(&IC1);
+		ourGPIO_Init(&IC2);
 }
 
 void Z_Pin_Interrupt_Init(void) {
@@ -44,10 +56,14 @@ void Z_Pin_Interrupt_Init(void) {
     NVIC_EnableIRQ(EXTI0_IRQn);
 }
 
-void EXTI0_IRQHandler(void) {
+void EXTI0_IRQHandler(TIM_TypeDef * Timer) {
     if (EXTI->PR & EXTI_PR_PR0) {  // Check if EXTI line 0 triggered
-        TIM2->CNT = 0;  // Reset the counter
+        Timer->CNT = 0;  // Reset the counter
 
         EXTI->PR |= EXTI_PR_PR0;  // Clear the pending bit
     }
+
+}
+uint32_t read_encoder_value(TIM_TypeDef * Timer){
+	return Timer -> CNT;
 }

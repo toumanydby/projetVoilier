@@ -2,6 +2,10 @@
 #define CODEUR_INC_H
 
 #include "stm32f10x.h"
+#include "GPIO.h"
+
+ourGPIO_struct IC1;
+ourGPIO_struct IC2;
 
 // Function to initialize the encoder on the specified timer
 void Encoder_Init(TIM_TypeDef * Timer);
@@ -10,6 +14,9 @@ void Encoder_Init(TIM_TypeDef * Timer);
 void Z_Pin_Interrupt_Init(void);
 
 // Interrupt handler for EXTI line 0
-void EXTI0_IRQHandler(void);
+void EXTI0_IRQHandler(TIM_TypeDef * Timer);
+
+
+uint32_t read_encoder_value(TIM_TypeDef * Timer);
 
 #endif // CODEUR_INC_H
