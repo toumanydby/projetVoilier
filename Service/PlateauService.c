@@ -3,11 +3,11 @@
 #include "TIMER.h"
 #include "constantes.h"
 
+
 ourGPIO_struct sens ;
 ourGPIO_struct vitesse ;
 MyTimer_Struct_TypeDef TimerPWM;
 int channel;
-
 
 void initPlateau(){
 	
@@ -15,20 +15,19 @@ void initPlateau(){
 	
 	vitesse.GPIO= GPIO_Vitesse_Plateau;
 	vitesse.GPIO_conf=altOut_Ppull;
-	vitesse.GPIO_pin= 1;
+	vitesse.GPIO_pin= GPIOPin_Vitesse_Plateau;
 		
-	sens.GPIO= GPIOA;
+	sens.GPIO= GPIO_Sens_Plateau;
 	sens.GPIO_conf=out_Ppull;
-	sens.GPIO_pin= 2;
+	sens.GPIO_pin= GPIOPin_Sens_Plateau;
 	
 	//timer pour PWM, control vitesse
 	
-	TimerPWM.Timer = TIM2;//20kHz 
+	TimerPWM.Timer = TimerPWM_Plateau; //20kHz 
 	TimerPWM.ARR = (100-1);
 	TimerPWM.PSC = (36-1);
 	channel=2;
 	int cycle=20; //
-	
 	
 	MyTimer_Base_Init(&TimerPWM);
 	MyTimer_Base_Start(TimerPWM.Timer);
@@ -40,8 +39,8 @@ void initPlateau(){
 	
 	ourGPIO_Init(&sens);
 	ourGPIO_Init(&vitesse);
-	
 }
+
 
 void controlVitesse(int cycle){
 			MyTimer_SetDutyCycle(TimerPWM.Timer,channel, cycle);

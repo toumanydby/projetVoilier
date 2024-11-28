@@ -9,6 +9,7 @@
 #define GPIOPin_Sens_Plateau 1
 #define GPIOPin_Vitesse_Plateau 2
 
+<<<<<<< HEAD
 
 
 //Girouette
@@ -19,4 +20,6 @@
 #define GPIOPin_IC2_CodIncr 9
 
 
+=======
+>>>>>>> 3e6fe0a (Suite du dev des services)
 #endif
