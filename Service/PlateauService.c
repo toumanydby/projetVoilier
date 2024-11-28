@@ -7,7 +7,6 @@
 ourGPIO_struct sens ;
 ourGPIO_struct vitesse ;
 MyTimer_Struct_TypeDef TimerPWM;
-int channel;
 
 
 // int received_data;
@@ -49,17 +48,14 @@ void initPlateau(){
 	TimerPWM.Timer = TimerPWM_Plateau; //20kHz 
 	TimerPWM.ARR = (100-1);
 	TimerPWM.PSC = (36-1);
-	channel=2;
 	int cycle=20; //
 	
 	MyTimer_Base_Init(&TimerPWM);
 	MyTimer_Base_Start(TimerPWM.Timer);
-	MyTimer_PWM(TimerPWM.Timer,channel);
-
-	MyTimer_SetDutyCycle(TimerPWM.Timer,channel, cycle);
+	MyTimer_PWM(TimerPWM.Timer,Channel_Plateau);
+	MyTimer_SetDutyCycle(TimerPWM.Timer,Channel_Plateau, cycle);
 	
 	//INIT
-	
 	ourGPIO_Init(&sens);
 	ourGPIO_Init(&vitesse);
 }

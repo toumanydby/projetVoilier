@@ -1,6 +1,8 @@
 #ifndef VOILE_SERVICE_H
 #define VOILE_SERVICE_H
 
+#include "stm32f10x.h"
+
 /**
 * @brief 
 *	@param
@@ -13,13 +15,13 @@ void initServoMoteur();
 *	@param
 *	@Note 
 */
-void setPosServoMoteur();
+void setPosServoMoteur(int dutycycle);
 
-/**
-* @brief 
-*	@param
-*	@Note 
-*/
-int getAngleVoile();
+// /**
+// * @brief 
+// *	@param
+// *	@Note 
+// */
+// int getAngleVoile();
 
 #endif 

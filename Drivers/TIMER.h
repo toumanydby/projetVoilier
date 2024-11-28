@@ -1,3 +1,4 @@
+
 #ifndef TIMER_H
 #define TIMER_H
 
@@ -25,7 +26,7 @@ void MyTimer_Base_Init(MyTimer_Struct_TypeDef * Timer);
 */
 void MyTimer_ActiveIT ( TIM_TypeDef * Timer, char Prio, void ( * IT_function ) (void));
 void MyTimer_PWM( TIM_TypeDef * Timer , char Channel);
-void MyTimer_SetDutyCycle(TIM_TypeDef * Timer, char Channel, int dutycycle);
+void MyTimer_SetDutyCycle(TIM_TypeDef * Timer, char Channel, double dutycycle);
 
 
 void TIM1_UP_IRQHandler(void);

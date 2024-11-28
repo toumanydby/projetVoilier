@@ -11,8 +11,8 @@ void MyTimer_Base_Init(MyTimer_Struct_TypeDef * TimIN){
 	if(TimIN->Timer == TIM3) RCC->APB1ENR |= RCC_APB1ENR_TIM3EN;
 	if(TimIN->Timer == TIM4) RCC->APB1ENR |= RCC_APB1ENR_TIM4EN;
 	
-	TimIN->Timer->ARR |= TimIN->ARR;
-	TimIN->Timer->PSC |= TimIN->PSC;
+	TimIN->Timer->ARR = TimIN->ARR;
+	TimIN->Timer->PSC = TimIN->PSC;
 }
 
 void MyTimer_ActiveIT (TIM_TypeDef * Timer, char Prio, void ( * IT_function ) (void)){
@@ -93,9 +93,9 @@ void MyTimer_PWM( TIM_TypeDef * Timer , char Channel){
 		Timer->CCER |= TIM_CCER_CC4E;             // Activer la capture/comparaison pour le canal 2 (activer le canal 2 )
 	}
 }
-void MyTimer_SetDutyCycle(TIM_TypeDef * Timer, char Channel, int dutycycle) {
+void MyTimer_SetDutyCycle(TIM_TypeDef * Timer, char Channel, double dutycycle) {
 	
-	int pulse = dutycycle * (Timer->ARR+1)/100;
+	double pulse = dutycycle * (Timer->ARR+1)/100;
   
 	if(Channel==1){
 		Timer->CCR1=pulse;
@@ -110,7 +110,3 @@ void MyTimer_SetDutyCycle(TIM_TypeDef * Timer, char Channel, int dutycycle) {
 		Timer->CCR4=pulse;
 	}
 }
-
-
-
-
