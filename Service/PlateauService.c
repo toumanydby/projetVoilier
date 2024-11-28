@@ -8,26 +8,28 @@ ourGPIO_struct sens ;
 ourGPIO_struct vitesse ;
 MyTimer_Struct_TypeDef TimerPWM;
 int channel;
-int received_data;
-
-void Receive(void){
-	received_data = MyUART_Read(USART1);
-	MyUART_Send(USART1, received_data);
-}
 
 
-void UsartInit(void){
-	Uart_init(USART1,9600);
+// int received_data;
+
+// void Receive(void){
+// 	received_data = MyUART_Read(USART1);
+// 	MyUART_Send(USART1, received_data);
+// }
+
+
+// void UsartInit(void){
+// 	Uart_init(USART1,9600);
 	
-	MyGPIO_Init(GPIOA,9,altOut_Ppull);//tx
-	MyGPIO_Init(GPIOA,10,In_Floating);//rx
+// 	MyGPIO_Init(GPIOA,9,altOut_Ppull);//tx
+// 	MyGPIO_Init(GPIOA,10,In_Floating);//rx
 	  
-  //MyGPIO_Init(GPIOA, 5, Out_Ppull);// 
+//   //MyGPIO_Init(GPIOA, 5, Out_Ppull);// 
 	
-	MyUART_EnableReceiveInterruption(USART1,UART_Callback);
+// 	MyUART_EnableReceiveInterruption(USART1,UART_Callback);
 
-	Receive_Interruption(USART1,8,Receive);	
-}
+// 	Receive_Interruption(USART1,8,Receive);	
+// }
 
 
 void initPlateau(){
