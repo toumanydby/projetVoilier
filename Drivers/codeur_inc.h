@@ -4,8 +4,6 @@
 #include "stm32f10x.h"
 #include "GPIO.h"
 
-ourGPIO_struct IC1;
-ourGPIO_struct IC2;
 
 // Function to initialize the encoder on the specified timer
 void Encoder_Init(TIM_TypeDef * Timer);

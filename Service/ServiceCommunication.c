@@ -8,9 +8,7 @@ void process_data(int data){
 	
 	TestGPIO.GPIO = GPIOA;
 	TestGPIO.GPIO_pin = 0;
-	TestGPIO.GPIO_conf = altOut_Ppull;
-	ourGPIO_Init(&TestGPIO);
-	
+	TestGPIO.GPIO_conf = altOut_Ppull;	
 	ourGPIO_Toggle(&TestGPIO, 0);
 	
 }

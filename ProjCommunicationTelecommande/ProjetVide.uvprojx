@@ -425,11 +425,6 @@
           <GroupName>Service</GroupName>
           <Files>
             <File>
-              <FileName>PlateauService.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Service\PlateauService.c</FilePath>
-            </File>
-            <File>
               <FileName>ServiceGirouette.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Service\ServiceGirouette.c</FilePath>
@@ -867,11 +862,6 @@
         <Group>
           <GroupName>Service</GroupName>
           <Files>
-            <File>
-              <FileName>PlateauService.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Service\PlateauService.c</FilePath>
-            </File>
             <File>
               <FileName>ServiceGirouette.c</FileName>
               <FileType>1</FileType>

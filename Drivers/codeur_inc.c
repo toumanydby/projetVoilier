@@ -1,6 +1,8 @@
 #include "stm32f10x.h"
 #include "codeur_inc.h"
 
+ourGPIO_struct IC1;
+ourGPIO_struct IC2;
 
 void Encoder_Init(TIM_TypeDef * Timer){
 	if(Timer == TIM1) {RCC->APB2ENR |= RCC_APB2ENR_TIM1EN;}

@@ -55,29 +55,29 @@ char MyUART_Read(USART_TypeDef *UART){
 void MyUART_EnableReceiveInterruption(USART_TypeDef *UART, void ( * IT_function ) (void)) {
 		// On active RXNE avec le flag (Receive Data Register Not Empty) et pour gerer les erreurs on active le flag USART_CR1_PEIE
     UART->CR1 |= (USART_CR1_RXNEIE | USART_CR1_PEIE);
-    ourGPIO_struct TX_GPIO;
+    //ourGPIO_struct TX_GPIO;
 		// On active l'interruption de l'UART dans le NVIC
 		if(UART == USART1){
 			Uart_PTF1 = IT_function;
-			TX_GPIO.GPIO = GPIOA;
-			TX_GPIO.GPIO_conf = altOut_Ppull;
-			TX_GPIO.GPIO_pin = 9;
-			ourGPIO_Init(&TX_GPIO);
+			//TX_GPIO.GPIO = GPIOA;
+			//TX_GPIO.GPIO_conf = altOut_Ppull;
+			//TX_GPIO.GPIO_pin = 9;
+			//ourGPIO_Init(&TX_GPIO);
 			NVIC_EnableIRQ(USART1_IRQn);
 		} 
 		else if( UART == USART2){
 			Uart_PTF2 = IT_function;
-			TX_GPIO.GPIO = GPIOD;
-			TX_GPIO.GPIO_conf = altOut_Ppull;
-			TX_GPIO.GPIO_pin = 5;
-			ourGPIO_Init(&TX_GPIO);
+			//TX_GPIO.GPIO = GPIOD;
+			//TX_GPIO.GPIO_conf = altOut_Ppull;
+			//TX_GPIO.GPIO_pin = 5;
+			//ourGPIO_Init(&TX_GPIO);
 			NVIC_EnableIRQ(USART2_IRQn);
 		} 
 		else if( UART == USART3){
-			TX_GPIO.GPIO = GPIOB;
-			TX_GPIO.GPIO_conf = altOut_Ppull;
-			TX_GPIO.GPIO_pin = 10;
-			ourGPIO_Init(&TX_GPIO);
+			//TX_GPIO.GPIO = GPIOB;
+			//TX_GPIO.GPIO_conf = altOut_Ppull;
+			//TX_GPIO.GPIO_pin = 10;
+			//ourGPIO_Init(&TX_GPIO);
 			Uart_PTF3 = IT_function;
 			NVIC_EnableIRQ(USART3_IRQn);
 		}

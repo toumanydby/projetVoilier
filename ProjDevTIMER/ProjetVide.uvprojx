@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\Drivers</IncludePath>
+              <IncludePath>..\Drivers;..\Services</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -413,6 +413,16 @@
               <FileName>codeur_inc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Drivers\codeur_inc.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Service</GroupName>
+          <Files>
+            <File>
+              <FileName>ServiceCommunication.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Service\ServiceCommunication.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -758,7 +768,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\Drivers</IncludePath>
+              <IncludePath>..\Drivers;..\Service</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -933,6 +943,16 @@
               <FileName>codeur_inc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Drivers\codeur_inc.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Service</GroupName>
+          <Files>
+            <File>
+              <FileName>ServiceCommunication.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Service\ServiceCommunication.c</FilePath>
             </File>
           </Files>
         </Group>
