@@ -3,11 +3,21 @@
 
 #include "stm32f10x.h"
 #include "GPIO.h"
-#include "codeur_inc.h"
-#include "constantes.h"
+#include "Codeur_inc.h"
+#include "Constantes.h"
 
+
+/**
+ * @brief Initialise les configs de la girouette
+ * 
+ */
 void initGirouette();
-int getAngleGirouette();
 
+/**
+ * @brief Recupere l'angle de la girouette compris entre 0 et 360 degres.
+ * 
+ * @return int valeur de l'angle [0,360]
+ */
+int getAngleGirouette();
 
 #endif

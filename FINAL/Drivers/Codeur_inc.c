@@ -1,6 +1,4 @@
-#include "stm32f10x.h"
-#include "codeur_inc.h"
-#include "constantes.h"
+#include "Codeur_inc.h"
 
 
 void Encoder_Init(TIM_TypeDef * Timer){
